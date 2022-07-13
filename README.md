@@ -18,8 +18,7 @@ public class HelloController {
     public String index(HttpServletRequest request) {
     ...
 ```
-配合 server.xml
-`<Host>` 节点下增加
+配合 Tomcat Server 的配置文件 server.xml 中 `<Host>` 节点下增加
 ```xml
 <!-- Set this web app to run on root of the site. -->
 <Context docBase="/usr/local/tomcat/webapps/spring-0.0.1-SNAPSHOT" path="/" reloadable="true"/>
@@ -37,7 +36,18 @@ public class HelloController {
 可查看C:\Users\用户.m2\repository\org\springframework\boot\spring-boot-dependencies\1.5.1.RELEASE\spring-boot-dependencies-1.5.1.RELEASE.pom。打开这个pom文件，搜索“tomcat.version” 会找到对应tomcat版本。如我的是
 ```xml
 <tomcat.version>9.0.64</tomcat.version>
-
+```
+那么我在 VS Code 中添加 Tomcat Server 必须添加相同版本的 Tomcat Server。Tomcat Server 9.x 版还有个老问题：
+```
+Failed to create server shutdown socket on address [localhost] and port [8005] (base port [8005] and offset [0])
+```
+解决办法就是 server.xml 中
+```xml
+<Server port="8005" shutdown="SHUTDOWN">
+```
+改成
+```xml
+<Server port="-1" shutdown="SHUTDOWN">
 ```
 
 ### 80 端口
@@ -47,7 +57,6 @@ public class HelloController {
                connectionTimeout="20000"
                redirectPort="8443" />
 ```
-
 
 # 构建成 docker 镜像
 ## 编辑 Dockerfile 文件
