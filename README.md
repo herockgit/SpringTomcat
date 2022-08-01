@@ -60,16 +60,16 @@ Failed to create server shutdown socket on address [localhost] and port [8005] (
 
 # 构建成 docker 镜像
 ## 编辑 Dockerfile 文件
-这里我指定了文件名 [spring.dockerfile](spring.dockerfile) 。
+这里我指定了文件名 [springtomcat.dockerfile](springtomcat.dockerfile) 。
 
 先使用默认配置构建一个
 ```
-docker build -f spring.dockerfile -t spring-hello:0.1 -t spring-hello:latest .
+docker build -f springtomcat.dockerfile -t springtomcat:0.1 -t springtomcat:latest .
 ```
 
 本地运行一下
 ```
-docker run -d -p 8080:80 --name spring-hello spring-hello
+docker run -d -p 8080:80 --name springtomcat springtomcat
 ```
 可以正常运行，但是访问报 404
 
@@ -87,10 +87,10 @@ docker run -d -p 8080:80 --name spring-hello spring-hello
 az cloud set -n AzureChinaCloud
 az login
 az acr login --name snowpeak
-docker tag spring-hello:0.1 snowpeak.azurecr.cn/spring-hello:0.1
-docker push snowpeak.azurecr.cn/spring-hello:0.1
-docker tag spring-hello:0.1 snowpeak.azurecr.cn/spring-hello:latest
-docker push snowpeak.azurecr.cn/spring-hello:latest
+docker tag springtomcat:0.1 snowpeak.azurecr.cn/springtomcat:0.1
+docker push snowpeak.azurecr.cn/springtomcat:0.1
+docker tag springtomcat:0.1 snowpeak.azurecr.cn/springtomcat:latest
+docker push snowpeak.azurecr.cn/springtomcat:latest
 ```
 
 ## 镜像体积的反复尝试

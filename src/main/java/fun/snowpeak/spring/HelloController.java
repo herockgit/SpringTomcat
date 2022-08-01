@@ -36,7 +36,7 @@ public class HelloController {
                 .append(clientIp)
                 .append(".</p><p>This application is running on <b>").append(inetadd.getHostName())
                 .append("</b> with IP <b>").append(inetadd.getHostAddress())
-                .append("</b>.</p><p>This is a demo project of Spring Boot package in Jar artifact.</p><p>This application is built with Spring <b>")
+                .append("</b>.</p><p>This is a demo project of Spring Boot package in WAR artifact and running in external Tomcat Server.</p><p>This application is built with Spring <b>")
                 .append(SpringVersion.getVersion()).append("</b> on Java <b>")
                 .append(JavaVersion.getJavaVersion().toString())
                 .append("</b>.</p><h4><a href=\"/hello\">hello</a></h4></body></html>");
